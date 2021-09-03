@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -55,7 +56,7 @@ public class DemoWebShopWishlistTests {
 
         step("Check quantity of added items in wishlist", ()->{
             open("http://demowebshop.tricentis.com/");
-            assertThat($(".wishlist-qty").text()).isEqualTo(quantityOfItemsInWishlist);
+            $(".wishlist-qty").shouldHave(Condition.text(quantityOfItemsInWishlist));
         });
     }
 }
